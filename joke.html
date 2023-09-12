@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./joke.css" />
+  </head>
+  <body>
+    <section>
+      <h1 class="title">Sweet Memories In Lips Expression</h1>
+      <div class="container">
+        <div class="joke">
+          <p></p>
+        </div>
+        <button>SMILE</button>
+      </div>
+    </section>
+
+    <script>
+      const button = document.querySelector(".container button");
+      const jokeDiv = document.querySelector(".container .joke p");
+
+      document.addEventListener("DOMContentLoaded", getJock);
+
+      button.addEventListener("click", getJock);
+
+      async function getJock() {
+        const jokeData = await fetch("https://icanhazdadjoke.com/", {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+        const jokeObj = await jokeData.json();
+        jokeDiv.innerHTML = jokeObj.joke;
+        console.log(jokeData);
+      }
+    </script>
+  </body>
+</html>
